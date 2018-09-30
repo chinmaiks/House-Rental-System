@@ -1,0 +1,7 @@
+<h1>Welcome to House Renting Portal</h1>
+
+<% if current_user %>
+	<p> Welcome <%= current_user.role %> </p>
+<%else%>
+	<%= link_to 'Login', new_user_session_path %>
+<% end %>

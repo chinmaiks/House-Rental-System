@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @potentialbuyer.user %>
+</p>
+
+<p>
+  <strong>House:</strong>
+  <%= @potentialbuyer.house %>
+</p>
+
+<%= link_to 'Edit', edit_potentialbuyer_path(@potentialbuyer) %> |
+<%= link_to 'Back', potentialbuyers_path %>
