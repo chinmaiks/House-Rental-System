@@ -1,7 +1,18 @@
 <h1>Welcome to House Renting Portal</h1>
 
-<% if current_user %>
-	<p> Welcome <%= current_user.role %> </p>
-<%else%>
 	<%= link_to 'Login', new_user_session_path %>
-<% end %>
+
+    <% if current_user.role=="realtor" or current_user.role=="admin" %>
+      <br><br>
+      <%= link_to 'Post a House' , new_house_path %><br> <br>
+      <%= link_to 'View all Houses', houses_path %> <br> <br>
+      <% if Company.exists?(current_user.id) %>
+        <%= link_to 'Create Real Estate Company', '#', :onclick => 'alert("Already Created a Company")' %> <br> <br>
+      <% else %>
+        <%= link_to 'Create Real Estate Company', new_company_path %> <br> <br>
+      <%  end %>
+      <%= link_to 'View all Real Estate Companies and Edit you Company', companies_url %> <br> <br>
+      <%= link_to 'View All Inquiries',inquirydetails_path %>
+    <% end %>
+
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>

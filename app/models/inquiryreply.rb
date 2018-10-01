@@ -1,2 +1,3 @@
 class Inquiryreply < ApplicationRecord
+
 end

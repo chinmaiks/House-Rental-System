@@ -1,2 +1,3 @@
 class Potentialbuyer < ApplicationRecord
+
 end

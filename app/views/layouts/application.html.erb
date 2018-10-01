@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HSR</title>
+    <title>House Rental System</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +10,11 @@
   </head>
 
   <body>
+  <%= link_to "Home", root_path%>
     <%= yield %>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
   </body>
 </html>

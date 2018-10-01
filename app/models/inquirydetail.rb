@@ -1,2 +1,3 @@
 class Inquirydetail < ApplicationRecord
+
 end
