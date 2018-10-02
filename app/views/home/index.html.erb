@@ -7,7 +7,7 @@
           <%= link_to 'Edit Profile', edit_user_registration_path %><br> <br>
           <%= link_to 'Post a House' , new_house_path %><br> <br>
           <%= link_to 'View all Houses', houses_path %> <br> <br>
-          <% if Company.exists?(current_user.id) or current_user.role == "admin" %>
+          <% if Company.exists?(current_user.id)  %>
             <%= link_to 'Create Real Estate Company', '#', :onclick => 'alert("Already Created a Company")' %> <br> <br>
       <% else %>
           <%= link_to 'Create Real Estate Company', new_company_path %> <br> <br>
