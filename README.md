@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Admin Login
+ID : admin@role.com
+Password: password
