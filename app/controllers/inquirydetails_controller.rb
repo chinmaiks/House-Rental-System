@@ -15,6 +15,7 @@ class InquirydetailsController < ApplicationController
   # GET /inquirydetails/new
   def new
     @inquirydetail = Inquirydetail.new
+    @inquirydetail.house_id = params[:id]
   end
 
   # GET /inquirydetails/1/edit
@@ -25,7 +26,8 @@ class InquirydetailsController < ApplicationController
   # POST /inquirydetails.json
   def create
     @inquirydetail = Inquirydetail.new(inquirydetail_params)
-
+    @inquirydetail.house_id = @houseid
+    
     respond_to do |format|
       if @inquirydetail.save
         format.html { redirect_to @inquirydetail, notice: 'Inquirydetail was successfully created.' }

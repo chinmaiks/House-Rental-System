@@ -35,5 +35,7 @@
   <%= @house.basement %>
 </p>
 
-<%= link_to 'Edit', edit_house_path(@house) %> |
+<% if (current_user.id == @house.user_id and current_user.role=='realtor') or current_user.role=='admin'%>
+  <%= link_to 'Edit', edit_house_path %> 
+<% end %>
 <%= link_to 'Back', houses_path %>

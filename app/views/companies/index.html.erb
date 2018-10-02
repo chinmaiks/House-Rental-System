@@ -26,8 +26,8 @@
         <td><%= company.founded_in %></td>
         <td><%= company.synopsis %></td>
         <td><%= company.revenue %></td>
-        <% if current_user.id == company.user_id %>
         <td><%= link_to 'Show', company %></td>
+        <% if current_user.id == company.user_id or current_user=="admin" %>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -35,7 +35,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Company', new_company_path %>
