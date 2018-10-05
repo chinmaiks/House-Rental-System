@@ -1,0 +1,11 @@
+<h1>List of Users</h1>
+<p>Email ID  Name  Role </p>
+<% @users.each do |user| %>
+  <%= user.email %>
+  <%= user.name %>
+  <%= user.role %>
+  <% if user.role != "admin"%>
+    <%= link_to "Delete", destroy_user_path(user.id), :method => :delete, :confirm => "You sure?" %><br>
+  <% end %>
+  <br>
+<% end %>
