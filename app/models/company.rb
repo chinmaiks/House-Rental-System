@@ -1,3 +1,6 @@
 class Company < ApplicationRecord
-belongs_to :user
+  has_many :users
+  has_many :houses
+  validates :name, :website, :address, :size, :founded_in, :revenue, :synopsis, presence: true, allow_blank: false
+  validates :revenue, :size, :founded_in, numericality: true
 end

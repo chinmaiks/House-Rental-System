@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :house
   has_many :company
+  validates :name, :role, :email, :presence=>true
 end

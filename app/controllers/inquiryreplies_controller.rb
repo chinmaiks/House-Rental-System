@@ -15,6 +15,8 @@ class InquiryrepliesController < ApplicationController
   # GET /inquiryreplies/new
   def new
     @inquiryreply = Inquiryreply.new
+    @@inqid = params[:inq_id]
+    @@houseid = params[:h_id]
   end
 
   # GET /inquiryreplies/1/edit
@@ -25,7 +27,9 @@ class InquiryrepliesController < ApplicationController
   # POST /inquiryreplies.json
   def create
     @inquiryreply = Inquiryreply.new(inquiryreply_params)
-
+    @inquiryreply[:inquirydetail_id]= @@inqid
+    @inquiryreply[:house_id]= @@houseid
+    @inquiryreply[:user_id]= current_user.id
     respond_to do |format|
       if @inquiryreply.save
         format.html { redirect_to @inquiryreply, notice: 'Inquiryreply was successfully created.' }
@@ -69,6 +73,6 @@ class InquiryrepliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inquiryreply_params
-      params.require(:inquiryreply).permit(:reply, :user_id, :inquirydetail_id)
+      params.require(:inquiryreply).permit(:reply, :user_id, :inquirydetail_id, :house_id)
     end
 end

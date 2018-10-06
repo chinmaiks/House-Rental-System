@@ -4,18 +4,31 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autocomplete: "contactinfo" %>
+  </div>
+
+  <div class="field">
     <%= f.label :contactinfo %>
     <%= f.text_field :contactinfo, autocomplete: "contactinfo" %>
   </div>
   
   <div class="field">
     <%= f.label :preferredcontact %>
-    <%= f.radio_button :preferredcontact, id: 'phone', autocomplete: "preferredcontact" %> Phone<br />
-    <%= f.radio_button :preferredcontact, id: 'text', autocomplete: "preferredcontact" %> Email<br />
+    <%= f.radio_button :preferredcontact, 'phone' %> Phone<br />
+    <%= f.radio_button :preferredcontact, 'email' %> Email<br />
   </div>
 
+  <div>
+    <% if current_user.role == 'realtor' %>
+      <%= f.label :company_id %>
+      <%= select("user", "company_id", Company.all.collect{ |c| [ c.name, c.id] }) %>
+      <% end%>
+    </div>
+  <br>
+
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 

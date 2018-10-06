@@ -16,8 +16,8 @@
     <% @inquiryreplies.each do |inquiryreply| %>
       <tr>
         <td><%= inquiryreply.reply %></td>
-        <td><%= inquiryreply.user %></td>
-        <td><%= inquiryreply.inquirydetail %></td>
+        <td><%= inquiryreply.user_id %></td>
+        <td><%= inquiryreply.inquirydetail_id %></td>
         <td><%= link_to 'Show', inquiryreply %></td>
         <td><%= link_to 'Edit', edit_inquiryreply_path(inquiryreply) %></td>
         <td><%= link_to 'Destroy', inquiryreply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,7 +25,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Inquiryreply', new_inquiryreply_path %>

@@ -15,9 +15,7 @@ class InquirydetailsController < ApplicationController
   # GET /inquirydetails/new
   def new
     @inquirydetail = Inquirydetail.new
-    #@house_id = params[:id]
-    # p @house_id
-    @@house_id = params[:id]
+    @@houseid = params[:id]
   end
 
   # GET /inquirydetails/1/edit
@@ -27,14 +25,14 @@ class InquirydetailsController < ApplicationController
   # POST /inquirydetails
   # POST /inquirydetails.json
   def create
-    #@inquirydetail = Inquirydetail.new(inquirydetail_params)
-    #@house_id = Inquirydetail.find(params[:id])
-    p "1234 get on the dance floor**********************8"
-    p @@house_id
-    values = inquirydetail_params
-    values[:user_id] = current_user.id
-    values[:house_id]= @@house_id
-    @inquirydetail = Inquirydetail.includes(:house, :user).new(values)
+    #values = inquirydetail_params
+    #values[:user_id] = current_user.id
+    #values[:house_id]= @@house_id
+    #@inquirydetail = Inquirydetail.includes(:house, :user).new(values)
+
+    @inquirydetail = Inquirydetail.new(inquirydetail_params)
+    @inquirydetail[:house_id]= @@houseid
+
     respond_to do |format|
       if @inquirydetail.save
         format.html { redirect_to @inquirydetail, notice: 'Inquirydetail was successfully created.' }

@@ -19,12 +19,14 @@
         <td><%= inquirydetail.subject %></td>
         <td><%= inquirydetail.house_id %></td>
         <td><%= link_to 'Show', inquirydetail %></td>
-        <% if current_user.role == 'househunter' or current_user.role ==  "admin" %>
+        <% if (current_user.role=="realtor") or current_user.role=="admin"%>
+          <td> <%= link_to 'Reply to Inquiry', new_inquiryreply_path(h_id:inquirydetail.house_id, inq_id:inquirydetail.id) %></td>
+        <%end%>
+        <% if (current_user.role == 'househunter' and current_user.id == inquirydetail.user_id ) or current_user.role ==  "admin" %>
           <td><%= link_to 'Edit', edit_inquirydetail_path(inquirydetail) %></td>
+          <td><%= link_to 'Delete Inquiry', inquirydetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         <% end %>
       </tr>
-    <% end %>
   </tbody>
 </table>
-
-<br>

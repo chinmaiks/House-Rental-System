@@ -15,6 +15,7 @@ class HousesController < ApplicationController
   # GET /houses/new
   def new
     @house = House.new
+    @@companyid = params[:id]
   end
 
   # GET /houses/1/edit
@@ -25,6 +26,7 @@ class HousesController < ApplicationController
   # POST /houses.json
   def create
     @house = House.new(house_params)
+    @house[:company_id]= @@companyid
 
     respond_to do |format|
       if @house.save
