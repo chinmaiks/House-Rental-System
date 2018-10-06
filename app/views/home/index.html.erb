@@ -15,7 +15,7 @@
             <%= link_to 'Post a House', '#', :onclick => 'alert("Create a new company or select an existing company by editing profile to post a house.")' %> <br> <br>
           <% else %>
             <%= link_to 'Post a House', new_house_path(:id => current_user.company_id ) %><br> <br>
-         <% end %>
+         <% end %> 
 
           <%= link_to 'View all Houses', houses_path %> <br> <br>
 
@@ -26,12 +26,14 @@
           <% end %>
 
       <%= link_to 'View all Real Estate Companies and Edit your Company', companies_path %> <br> <br>
-      <%= link_to 'View All Inquiries',inquirydetails_path %>    
+      <%= link_to 'View/Reply to Inquiries',inquirydetails_path %>    
     <% elsif current_user.role=='househunter' or current_user.role=="admin" %>
        <p> Welcome <%= current_user.name %> </p>
        <%= link_to 'Edit Profile', edit_user_registration_path %><br> <br>
-       <%= link_to 'View/Search Houses', houses_path %><br> <br>
+       <%= link_to 'View all houses', houses_path %><br> <br>
+       <%= link_to 'Search houses', househunter_search_path %><br><br>
        <%= link_to 'View All Companies', companies_path %><br> <br>
+       <%= link_to 'View Inquiries',inquirydetails_path %>
     <% end %><br><br>
 
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>

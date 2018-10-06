@@ -43,7 +43,8 @@
 
   <div class="field">
     <%= form.label :basement %>
-    <%= form.text_field :basement %>
+    <%= form.radio_button :basement, 'Yes' %> Yes<br />
+    <%= form.radio_button :basement, 'No' %> No<br />
   </div>
 
     <%= form.hidden_field :user_id, :value => current_user.id %>

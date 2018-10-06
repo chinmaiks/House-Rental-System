@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'househunter/search'
   get 'user/index'
   resources :inquiryreplies
   resources :inquirydetails
@@ -10,11 +11,6 @@ Rails.application.routes.draw do
   match '/user', :to => 'user#index',    :as => :user,         :via => :get
   match '/user/:id', :to => 'user#delete', :as => :destroy_user, :via => :delete
   root 'home#index'
-  #delete 'users/sign_out', to:'devise/sessions#destroy'
-  #get 'users/sign_out', to:'devise/sessions#destroy'
-  #authenticated do
- 	#  root :to => 'home#index'
-  #end
-  
+  #get 'househunter/search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
