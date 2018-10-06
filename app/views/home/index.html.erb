@@ -9,11 +9,9 @@
             <%= link_to 'View / Delete List of User Profiles',user_index_path %><br> <br>
           <% end %>
 
-          <% if current_user.role == "realtor" %>
-            <%= link_to 'Edit Profile', edit_user_registration_path %><br> <br>
-          <%end %>
+          <%= link_to 'Edit Profile', edit_user_registration_path %><br> <br>
 
-          <% if current_user.company_id == nil  %>
+          <% if current_user.company_id == nil && current_user.role!= "admin" %>
             <%= link_to 'Post a House', '#', :onclick => 'alert("Create a new company or select an existing company by editing profile to post a house.")' %> <br> <br>
           <% else %>
             <%= link_to 'Post a House', new_house_path(:id => current_user.company_id ) %><br> <br>
