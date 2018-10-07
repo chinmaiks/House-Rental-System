@@ -32,7 +32,7 @@ class InquirydetailsController < ApplicationController
 
     @inquirydetail = Inquirydetail.new(inquirydetail_params)
     @inquirydetail[:house_id]= @@houseid
-
+    @inquirydetail[:user_id]= current_user.id
     respond_to do |format|
       if @inquirydetail.save
         format.html { redirect_to @inquirydetail, notice: 'Inquirydetail was successfully created.' }
