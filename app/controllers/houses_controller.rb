@@ -26,6 +26,7 @@ class HousesController < ApplicationController
   # POST /houses.json
   def create
     @house = House.new(house_params)
+    
     @house[:company_id]= @@companyid
 
     respond_to do |format|

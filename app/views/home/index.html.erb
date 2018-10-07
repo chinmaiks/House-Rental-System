@@ -5,7 +5,7 @@
       <% if current_user.role=="realtor" or current_user.role=="admin" %>
           <p> Welcome <%= current_user.name %> </p>
           <% if current_user.role == "admin" %>
-          <%= link_to 'Create New Realtor or House Hunter', new_user_registration_path  %><br><br>
+          <%= link_to 'Create New Realtor or House Hunter', user_new_path  %><br><br>
             <%= link_to 'View / Delete List of User Profiles',user_index_path %><br> <br>
           <% end %>
 
