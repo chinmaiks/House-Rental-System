@@ -2,6 +2,13 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
+    <%= f.label :role %>
+    <%= f.radio_button :role, 'realtor' %> Realtor<br />
+    <%= f.radio_button :role, 'househunter' %> House Hunter<br />
+    <%= f.radio_button :role, 'admin' %> Admin<br />
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
