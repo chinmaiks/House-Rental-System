@@ -4,17 +4,29 @@ class PotentialbuyersController < ApplicationController
   # GET /potentialbuyers
   # GET /potentialbuyers.json
   def index
-    @potentialbuyers = Potentialbuyer.all
+
+    @houseid = params[:house_id]
+    @potentialbuyers = Potentialbuyer.where("house_id = ?" , @houseid)
+    @potential_users = []
+    @pot_profile = []
+    @potentialbuyers.each do |potbuy|
+      @potential_users << User.where("id = ?" , potbuy.user_id)
+      @pot_profile << potbuy
+    end
   end
 
   # GET /potentialbuyers/1
   # GET /potentialbuyers/1.json
   def show
+
+    @user_id = params[:id]
+    @users = User.where("id=?",@user_id)
   end
 
   # GET /potentialbuyers/new
   def new
     @potentialbuyer = Potentialbuyer.new
+    @houseid = params[:id]
   end
 
   # GET /potentialbuyers/1/edit
@@ -25,16 +37,20 @@ class PotentialbuyersController < ApplicationController
   # POST /potentialbuyers.json
   def create
     @potentialbuyer = Potentialbuyer.new(potentialbuyer_params)
+    @checkerList = Potentialbuyer.where("house_id = ? and user_id = ? ", @potentialbuyer.house_id , current_user.id)
 
     respond_to do |format|
-      if @potentialbuyer.save
+      if @checkerList.any?
+        format.html { redirect_to houses_path, notice: 'Interest already exists' }
+   else if @potentialbuyer.save
         format.html { redirect_to @potentialbuyer, notice: 'Potentialbuyer was successfully created.' }
         format.json { render :show, status: :created, location: @potentialbuyer }
       else
         format.html { render :new }
         format.json { render json: @potentialbuyer.errors, status: :unprocessable_entity }
-      end
+        end
     end
+  end
   end
 
   # PATCH/PUT /potentialbuyers/1
