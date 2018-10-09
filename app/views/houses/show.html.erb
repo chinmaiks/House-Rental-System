@@ -37,6 +37,8 @@
 
 <% if (current_user.id == @house.user_id and current_user.role =='realtor') or current_user.role=='admin'%>
   <%= link_to 'Edit', edit_house_path %><br><br>
+<%end %>
+  <% if (current_user.role =='househunter') or current_user.role=='admin'%>
   <%= form_for @potentialbuyer do |form| %>  
     <% if @added %>
       <%= button_to 'Not Interested in Buying', @potentialbuyer, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -46,6 +48,6 @@
       <%= form.submit 'Interested in Buying' %>
     <% end%>
   <% end %>
-<% end %>
+  <% end %>
 <br>
 <%= link_to 'Back', houses_path %>
