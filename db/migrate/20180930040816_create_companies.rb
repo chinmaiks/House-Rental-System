@@ -8,7 +8,7 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string :founded_in
       t.text :synopsis
       t.string :revenue
-      t.belongs_to :user, foreign_key: true #comment it
+      #t.belongs_to :user, foreign_key: true #comment it
       t.references :user
       t.timestamps
     end
