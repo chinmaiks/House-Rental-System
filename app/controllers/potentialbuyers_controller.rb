@@ -37,20 +37,16 @@ class PotentialbuyersController < ApplicationController
   # POST /potentialbuyers.json
   def create
     @potentialbuyer = Potentialbuyer.new(potentialbuyer_params)
-    @checkerList = Potentialbuyer.where("house_id = ? and user_id = ? ", @potentialbuyer.house_id , current_user.id)
 
     respond_to do |format|
-      if @checkerList.any?
-        format.html { redirect_to houses_path, notice: 'Interest already exists' }
-   else if @potentialbuyer.save
-        format.html { redirect_to @potentialbuyer, notice: 'Potentialbuyer was successfully created.' }
+      if @potentialbuyer.save
+        format.html { redirect_to houses_path, notice: 'You are now a potential buyer..!' }
         format.json { render :show, status: :created, location: @potentialbuyer }
       else
         format.html { render :new }
         format.json { render json: @potentialbuyer.errors, status: :unprocessable_entity }
-        end
+      end
     end
-  end
   end
 
   # PATCH/PUT /potentialbuyers/1
@@ -72,7 +68,7 @@ class PotentialbuyersController < ApplicationController
   def destroy
     @potentialbuyer.destroy
     respond_to do |format|
-      format.html { redirect_to potentialbuyers_url, notice: 'Potentialbuyer was successfully destroyed.' }
+      format.html { redirect_to houses_path, notice: 'You are not a potential buyer anymore...!' }
       format.json { head :no_content }
     end
   end

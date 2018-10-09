@@ -10,6 +10,14 @@ class HousesController < ApplicationController
   # GET /houses/1
   # GET /houses/1.json
   def show
+      if Potentialbuyer.where( house_id: @house.id ).where( user_id: current_user.id ).exists?  
+        @id = Potentialbuyer.where(house_id: @house.id ).where( user_id: current_user.id ).pluck(:id).take(1).first.to_i
+        @potentialbuyer = Potentialbuyer.find_by_id(@id)
+        @added = true
+      else
+        @added = false
+        @potentialbuyer = Potentialbuyer.new
+      end
   end
 
   # GET /houses/new
@@ -42,7 +50,7 @@ class HousesController < ApplicationController
 
   # PATCH/PUT /houses/1
   # PATCH/PUT /houses/1.json
-  def update
+  def update  
     respond_to do |format|
       if @house.update(house_params)
         format.html { redirect_to @house, notice: 'House was successfully updated.' }

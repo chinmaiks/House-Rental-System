@@ -8,7 +8,7 @@ class CreateHouses < ActiveRecord::Migration[5.2]
       t.string :floors
       t.string :price
       t.string :basement
-      #t.belongs_to :company, foreign_key: true
+      t.belongs_to :company, foreign_key: true #comment it
       t.references :user
 
       t.timestamps

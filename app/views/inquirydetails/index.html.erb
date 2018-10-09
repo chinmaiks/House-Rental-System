@@ -23,9 +23,6 @@
           <td> <%= link_to 'Reply to Inquiry', new_inquiryreply_path(h_id:inquirydetail.house_id, inq_id:inquirydetail.id) %></td>
         <%end%>
 
-        <!-- <td><%= House.where(id: inquirydetail.house_id).pluck(:company_id).take(1).first.to_i %></td> -->
-
-
         <% if (current_user.role == 'househunter' and current_user.id == inquirydetail.user_id ) or current_user.role ==  "admin" %>
           <td><%= link_to 'Edit', edit_inquirydetail_path(inquirydetail) %></td>
           <td><%= link_to 'Delete Inquiry', inquirydetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>

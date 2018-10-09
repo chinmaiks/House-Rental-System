@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 2018_10_08_023801) do
     t.string "founded_in"
     t.text "synopsis"
     t.string "revenue"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
   create_table "houses", force: :cascade do |t|
@@ -33,36 +34,44 @@ ActiveRecord::Schema.define(version: 2018_10_08_023801) do
     t.string "floors"
     t.string "price"
     t.string "basement"
-    t.integer "company_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.integer "company_id"
     t.index ["company_id"], name: "index_houses_on_company_id"
+    t.index ["user_id"], name: "index_houses_on_user_id"
   end
 
   create_table "inquirydetails", force: :cascade do |t|
     t.text "content"
     t.text "subject"
+    t.integer "user_id"
     t.integer "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["house_id"], name: "index_inquirydetails_on_house_id"
+    t.index ["user_id"], name: "index_inquirydetails_on_user_id"
   end
 
   create_table "inquiryreplies", force: :cascade do |t|
     t.text "reply"
+    t.integer "user_id"
     t.integer "inquirydetail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "house_id"
+    t.index ["house_id"], name: "index_inquiryreplies_on_house_id"
     t.index ["inquirydetail_id"], name: "index_inquiryreplies_on_inquirydetail_id"
+    t.index ["user_id"], name: "index_inquiryreplies_on_user_id"
   end
 
   create_table "potentialbuyers", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["house_id"], name: "index_potentialbuyers_on_house_id"
+    t.index ["user_id"], name: "index_potentialbuyers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,13 +85,14 @@ ActiveRecord::Schema.define(version: 2018_10_08_023801) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role"
     t.string "name"
     t.string "contactinfo"
     t.string "preferredcontact"
-    t.string "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email", "role"], name: "index_users_on_email_and_role", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

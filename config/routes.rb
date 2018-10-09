@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'user/index'
   get 'user/new'
 
+  #delete '/potentialbuyers/:id', to: 'potentialbuyers#destroy' 
 
   resources :inquiryreplies
   resources :inquirydetails
@@ -14,5 +15,8 @@ Rails.application.routes.draw do
   match '/user', :to => 'user#index',    :as => :user,         :via => :get
   match '/user/:id', :to => 'user#delete', :as => :destroy_user, :via => :delete
   match '/user/create', :to => 'user#create', :as => :create_user, :via => :post
+
+
+  #match '/potentialbuyers/:id(.:format)', :to => 'potentialbuyers#destroy', :as => :potentialbuyers_path, :via => :delete
   root 'home#index'
 end

@@ -35,7 +35,17 @@
   <%= @house.basement %>
 </p>
 
-<% if (current_user.id == @house.user_id and current_user.role=='realtor') or current_user.role=='admin'%>
-  <%= link_to 'Edit', edit_house_path %> 
+<% if (current_user.id == @house.user_id and current_user.role =='realtor') or current_user.role=='admin'%>
+  <%= link_to 'Edit', edit_house_path %><br><br>
+  <%= form_for @potentialbuyer do |form| %>  
+    <% if @added %>
+      <%= button_to 'Not Interested in Buying', @potentialbuyer, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% else %>
+      <%= form.hidden_field :user_id, :value=>current_user.id %>  
+      <%= form.hidden_field :house_id, :value=>@house.id %>
+      <%= form.submit 'Interested in Buying' %>
+    <% end%>
+  <% end %>
 <% end %>
+<br>
 <%= link_to 'Back', houses_path %>

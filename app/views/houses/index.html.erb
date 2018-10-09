@@ -34,7 +34,6 @@
         <% end %>
         <% if current_user.role=='househunter' or current_user.role == 'admin' %>
             <td><%= link_to 'Submit Inquiry', new_inquirydetail_path(:id => house.id) %></td>
-            <td><%= link_to 'Interested!',  new_potentialbuyer_path(:id => house.id)%> </td>
         <% end %>
         <% if current_user.role=='realtor' or current_user.role == 'admin' %>
           <td><%= link_to 'View Potential Buyers', potentialbuyers_path(:house_id =>house.id) %></td>
