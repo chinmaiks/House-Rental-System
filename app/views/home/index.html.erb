@@ -18,7 +18,8 @@
          <% end %> 
 
           <%= link_to 'View all Houses', houses_path %> <br> <br>
-          <% if current_user.company_id==nil || (Company.exists?(current_user.company_id) && current_user.role!= "admin")  %>
+    <%= Company.exists?(current_user.company_id)  %>
+          <% if (Company.exists?(current_user.company_id) && current_user.role!= "admin")  %>
             <%= link_to 'Create Real Estate Company', '#', :onclick => 'alert("Already Created a Company")' %> <br> <br>
           <% else %>
             <%= link_to 'Create Real Estate Company', new_company_path %> <br> <br>

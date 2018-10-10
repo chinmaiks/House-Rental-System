@@ -25,7 +25,7 @@
 
         <% if (current_user.role == 'househunter' and current_user.id == inquirydetail.user_id ) or current_user.role ==  "admin" %>
           <td><%= link_to 'Edit', edit_inquirydetail_path(inquirydetail) %></td>
-          <td><%= link_to 'Delete Inquiry', inquirydetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to 'Delete Inquiry', inquirydetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
         <% end %>
       </tr>

@@ -20,7 +20,7 @@
         <td><%= inquiryreply.inquirydetail_id %></td>
         <td><%= link_to 'Show', inquiryreply %></td>
         <td><%= link_to 'Edit', edit_inquiryreply_path(inquiryreply) %></td>
-        <td><%= link_to 'Destroy', inquiryreply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', inquiryreply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
