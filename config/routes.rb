@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'user/index'
   get 'user/new'
 
+  get 'home/switchprofile'
   #delete '/potentialbuyers/:id', to: 'potentialbuyers#destroy' 
 
   resources :inquiryreplies

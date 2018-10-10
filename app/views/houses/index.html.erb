@@ -28,14 +28,14 @@
         <td><%= house.price %></td>
         <td><%= house.basement %></td>
         <td><%= link_to 'Show', house %></td>
-        <% if ( current_user.role=='realtor' and current_user.id == house.user_id ) or current_user.role == "admin" %>
+        <% if ( session[:role]=='realtor' and current_user.id == house.user_id ) or session[:role] == "admin" %>
           <td><%= link_to 'Edit', edit_house_path(house) %></td>
           <td><%= link_to 'Delete', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-        <% if current_user.role=='househunter' or current_user.role == 'admin' %>
+        <% if session[:role]=='househunter' or session[:role] == 'admin' %>
             <td><%= link_to 'Submit Inquiry', new_inquirydetail_path(:id => house.id) %></td>
         <% end %>
-        <% if current_user.role=='realtor' or current_user.role == 'admin' %>
+        <% if session[:role]=='realtor' or session[:role] == 'admin' %>
           <td><%= link_to 'View Potential Buyers', potentialbuyers_path(:house_id =>house.id) %></td>
         <% end %>
       </tr>

@@ -15,7 +15,7 @@
   <%= @inquirydetail.house_id %>
 </p>
 
-<% if current_user.role == 'househunter' or current_user.role=="admin" %>
+<% if session[:role] == 'househunter' or session[:role]=="admin" %>
 	<%= link_to 'Edit', edit_inquirydetail_path(@inquirydetail) %> |
 <% end %>
 <%= link_to 'Back', inquirydetails_path %>
