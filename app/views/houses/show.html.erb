@@ -38,7 +38,6 @@
 <% if (current_user.id == @house.user_id and session[:role] =='realtor') or session[:role]=='admin'%>
   <%= link_to 'Edit', edit_house_path %><br><br>
 <% end %>
-
 <% if session[:role] =='househunter' or session[:role]=='admin'%>
   <%= form_for @potentialbuyer do |form| %>  
       <% if @added %>
@@ -49,6 +48,6 @@
         <%= form.submit 'Interested in Buying' %>
       <% end%>
   <% end %>
-<% end %>
+  <% end %>
 <br>
 <%= link_to 'Back', houses_path %>

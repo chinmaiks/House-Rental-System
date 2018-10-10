@@ -30,7 +30,7 @@
         <td><%= link_to 'Show', house %></td>
         <% if ( session[:role]=='realtor' and current_user.id == house.user_id ) or session[:role] == "admin" %>
           <td><%= link_to 'Edit', edit_house_path(house) %></td>
-          <td><%= link_to 'Delete', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to 'Delete', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
         <% if session[:role]=='househunter' or session[:role] == 'admin' %>
             <td><%= link_to 'Submit Inquiry', new_inquirydetail_path(:id => house.id) %></td>

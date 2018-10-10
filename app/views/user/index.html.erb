@@ -21,7 +21,7 @@
         <td><%= user.contactinfo %></td>
         <td><%= user.preferredcontact %></td>
         <% if user.role != "admin"%>
-    		<td><%= link_to "Delete", destroy_user_path(user.id), :method => :delete, :confirm => "You sure?" %></td><br>
+    		<td><%= button_to "Delete", destroy_user_path(user.id), :method => :delete, :confirm => "You sure?" %></td><br>
   		<% end %>
     </tr>
   <% end %>

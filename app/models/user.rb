@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable#, :validatable
 
   has_many :house, :dependent => :destroy
-  has_and_belongs_to_many :company, :dependent => :destroy
+  has_many :company, :dependent => :destroy
+  
   validates :name, :role, :email, :presence=>true
 
   validates_presence_of   :email, if: :email_required?

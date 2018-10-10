@@ -1,4 +1,5 @@
 <h1>Welcome to House Renting Portal</h1>
+  
   <% if current_user %>
 
       <% if session[:role]=="realtor" or session[:role]=="admin" %>
@@ -17,6 +18,7 @@
          <% end %> 
 
           <%= link_to 'View all Houses', houses_path %> <br> <br>
+
           <% if current_user.company_id==nil || (Company.exists?(current_user.company_id) && session[:role]!= "admin")  %>
             <%= link_to 'Create Real Estate Company', '#', :onclick => 'alert("Already Created a Company")' %> <br> <br>
           <% else %>
