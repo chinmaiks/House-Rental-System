@@ -45,7 +45,7 @@
     <%= form.label :revenue %>
     <%= form.text_field :revenue %>
   </div>
-  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <%= form.hidden_field :user_id, :value => session[:id] %>
   <div class="actions">
     <%= form.submit %>
   </div>

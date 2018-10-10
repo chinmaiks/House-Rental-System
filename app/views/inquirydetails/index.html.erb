@@ -23,7 +23,7 @@
           <td> <%= link_to 'Reply to Inquiry', new_inquiryreply_path(h_id:inquirydetail.house_id, inq_id:inquirydetail.id) %></td>
         <%end%>
 
-        <% if (session[:role] == 'househunter' and current_user.id == inquirydetail.user_id ) or session[:role] ==  "admin" %>
+        <% if (session[:role] == 'househunter' and session[:id] == inquirydetail.user_id ) or session[:role] ==  "admin" %>
           <td><%= link_to 'Edit', edit_inquirydetail_path(inquirydetail) %></td>
           <td><%= button_to 'Delete Inquiry', inquirydetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>

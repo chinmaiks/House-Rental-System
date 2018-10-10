@@ -43,7 +43,7 @@
 	        <td><%= house.price %></td>
 	        <td><%= house.basement %></td>
 	        <td><%= link_to 'Show', house %></td>
-        	<% if session[:role]=='realtor' and current_user.id == house.user_id %>
+        	<% if session[:role]=='realtor' and session[:id] == house.user_id %>
         		<td><%= link_to 'Edit', edit_house_path(house) %></td>
         		<td><%= button_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         	<% end %>

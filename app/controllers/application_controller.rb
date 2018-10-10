@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     session[:role] = current_user.role
+    session[:id]   = current_user.id
     root_path
   end
 

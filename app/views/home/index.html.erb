@@ -11,7 +11,7 @@
 
           <%= link_to 'Edit Profile', edit_user_registration_path %><br> <br>
 
-          <% if current_user.company_id == nil && session[:role]!= "admin" %>
+          <% if Company.exists?(current_user.company_id) %>
             <%= link_to 'Post a House', '#', :onclick => 'alert("Create a new company or select an existing company by editing profile to post a house.")' %> <br> <br>
           <% else %>
             <%= link_to 'Post a House', new_house_path(:id => current_user.company_id ) %><br> <br>
@@ -19,7 +19,7 @@
 
           <%= link_to 'View all Houses', houses_path %> <br> <br>
 
-          <% if current_user.company_id==nil || (Company.exists?(current_user.company_id) && session[:role]!= "admin")  %>
+          <% if (Company.exists?(current_user.company_id) && session[:role]!= "admin")  %>
             <%= link_to 'Create Real Estate Company', '#', :onclick => 'alert("Already Created a Company")' %> <br> <br>
           <% else %>
             <%= link_to 'Create Real Estate Company', new_company_path %> <br> <br>
