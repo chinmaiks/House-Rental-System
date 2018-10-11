@@ -28,10 +28,14 @@
         <td><%= company.revenue %></td>
         <td><%= link_to 'Show', company %></td>
         <% if session[:id] == company.user_id or session[:role]=="admin" %>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= button_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        
-        <% end %>
+          <td><%= link_to 'Edit', edit_company_path(company) %></td>
+          <% if User.where( :company_id=>4)[0][:company_id] != company.id and session[:role]=="admin" %>  
+            <td><%= button_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          <% if session[:id] == company.user_id and session[:role]!="admin" and company.id != 1 %>
+            <td><%= button_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>        
       </tr>
     <% end %>
   </tbody>
