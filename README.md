@@ -1,6 +1,6 @@
 
 Admin Login
-ID : hch_role@admin.com
+ID : admin@email.com
 Password: password
 
 Admins are preconfigured and an admin cannot signup.
