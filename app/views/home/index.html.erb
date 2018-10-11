@@ -11,7 +11,7 @@
 
           <%= link_to 'Edit Profile', edit_user_registration_path %><br> <br>
 
-          <% if Company.exists?(current_user.company_id) %>
+          <% if session[:role]!= "admin" && Company.exists?(current_user.company_id) %>
             <%= link_to 'Post a House', '#', :onclick => 'alert("Create a new company or select an existing company by editing profile to post a house.")' %> <br> <br>
           <% else %>
             <%= link_to 'Post a House', new_house_path(:id => current_user.company_id ) %><br> <br>
