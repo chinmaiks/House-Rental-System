@@ -6,4 +6,17 @@ class UserControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not save user without email" do
+    user = User.new
+    user.email = ""
+    assert_not user.save
+  end
+
+  test "should not save user with invalid email" do
+    user = User.new
+    user.name = "xyz"
+    user.email = "xyz.com"
+    user.password = "password"
+    assert_not user.save
+  end
 end

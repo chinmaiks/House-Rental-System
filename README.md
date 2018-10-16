@@ -78,3 +78,5 @@ Switch Profile
 9. By clicking switch profile, house hunter will be switched to realtor and vice versa.
 
 All the users can sign out by clicking on the sign out button.
+
+Test cases added for UserController.rb
